@@ -1,0 +1,44 @@
+#Smoke#Regression
+Feature: User Login
+
+  Scenario: Sucessful Login                                                                           # E:/UGVLE/year_3/sem_1/IS3103 Software Quality Assurance/Assignments/BDD/src/test/resources/features/LoginProfile.feature:3
+    Given User is on the "Home" page on URL "https://demo.actitime.com/login.do"                      # Login.user_is_on_the_page_on_URL(String,String)
+    When User fill in "Username" with "admin"                                                         # Login.user_fill_in_with(String,String)
+    And User fill in "Password" with "manager"                                                        # Login.user_fill_in_with(String,String)
+    And User click on the "Login" button                                                              # Login.user_click_on_the_button(String)
+    Then User should be on the "Time Entry" page on URL "https://demo.actitime.com/user/submit_tt.do" # Login.user_should_be_on_the_page_on_URL(String,String)
+    And User should see the "Logout" button                                                           # Login.user_should_see_the_button(String)
+    And User close the browser                                                                        # Login.user_close_the_browser()
+
+  Scenario Outline: Multiple User Login                                                               # E:/UGVLE/year_3/sem_1/IS3103 Software Quality Assurance/Assignments/BDD/src/test/resources/features/LoginProfile.feature:12
+    Given User is on the "Home" page on URL "https://demo.actitime.com/login.do"
+    When User fill in login credentials with "<username>" and "<password>"
+    And User click on the "Login" button
+    Then User should be on the "Time Entry" page on URL "https://demo.actitime.com/user/submit_tt.do"
+    And User should see the "Logout" button
+    And User close the browser
+
+    Examples: 
+
+  Scenario Outline: Multiple User Login                                                               # E:/UGVLE/year_3/sem_1/IS3103 Software Quality Assurance/Assignments/BDD/src/test/resources/features/LoginProfile.feature:22
+    Given User is on the "Home" page on URL "https://demo.actitime.com/login.do"                      # Login.user_is_on_the_page_on_URL(String,String)
+    When User fill in login credentials with "admin" and "manager"                                    # Login.user_fill_in_login_credentials_with_and(String,String)
+    And User click on the "Login" button                                                              # Login.user_click_on_the_button(String)
+    Then User should be on the "Time Entry" page on URL "https://demo.actitime.com/user/submit_tt.do" # Login.user_should_be_on_the_page_on_URL(String,String)
+    And User should see the "Logout" button                                                           # Login.user_should_see_the_button(String)
+    And User close the browser                                                                        # Login.user_close_the_browser()
+
+  Scenario Outline: Multiple User Login                                                               # E:/UGVLE/year_3/sem_1/IS3103 Software Quality Assurance/Assignments/BDD/src/test/resources/features/LoginProfile.feature:23
+    Given User is on the "Home" page on URL "https://demo.actitime.com/login.do"                      # Login.user_is_on_the_page_on_URL(String,String)
+    When User fill in login credentials with "admin" and "manager"                                    # Login.user_fill_in_login_credentials_with_and(String,String)
+    And User click on the "Login" button                                                              # Login.user_click_on_the_button(String)
+    Then User should be on the "Time Entry" page on URL "https://demo.actitime.com/user/submit_tt.do" # Login.user_should_be_on_the_page_on_URL(String,String)
+    And User should see the "Logout" button                                                           # Login.user_should_see_the_button(String)
+    And User close the browser                                                                        # Login.user_close_the_browser()
+
+  Scenario: Invalid Login                                                        # E:/UGVLE/year_3/sem_1/IS3103 Software Quality Assurance/Assignments/BDD/src/test/resources/features/LoginProfile.feature:25
+    Given User is on the "Home" page on URL "https://demo.actitime.com/login.do" # Login.user_is_on_the_page_on_URL(String,String)
+    When User fill in "Username" with "xyz"                                      # Login.user_fill_in_with(String,String)
+    And User fill in "Password" with "xyz"                                       # Login.user_fill_in_with(String,String)
+    And User click on the "Login" button                                         # Login.user_click_on_the_button(String)
+    Then User should see "Error Message" message                                 # Login.user_should_see_message(String)
